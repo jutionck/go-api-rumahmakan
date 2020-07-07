@@ -2,8 +2,6 @@ package utils
 
 import (
 	"errors"
-	"github.com/jutionck/go-api-rumahmakan/config"
-	"github.com/jutionck/go-api-rumahmakan/models"
 )
 
 func ValidateInputNotNil(data ...interface{}) error {
@@ -19,14 +17,14 @@ func ValidateInputNotNil(data ...interface{}) error {
 	}
 	return nil
 }
-
-func CekStok(foodCode string) (models.FoodStock, error) {
-	db, _ := config.ConfifDb()
-	var foodStok models.FoodStock
-	query := SELECT_FOOD_STOCK
-	err := db.QueryRow(query, foodCode).Scan(&foodStok.FoodCode, &foodStok.FoodName, &foodStok.FoodStock)
-	if err != nil {
-		return foodStok, err
-	}
-	return foodStok, nil
-}
+//
+//func CekStok(foodCode string) (models.FoodStock, error) {
+//	db, _ := config.ConfifDb()
+//	var foodStok models.FoodStock
+//	query := SELECT_FOOD_STOCK
+//	err := db.QueryRow(query, foodCode).Scan(&foodStok.FoodCode, &foodStok.FoodName, &foodStok.FoodStock)
+//	if err != nil {
+//		return foodStok, err
+//	}
+//	return foodStok, nil
+//}

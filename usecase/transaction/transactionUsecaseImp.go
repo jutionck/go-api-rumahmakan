@@ -25,9 +25,7 @@ func (t transactionUsecase) SqlInsertTransaction(transaction *models.Transaction
 		return err
 	}
 	//cekStok, err := utils.CekStok(transaction.DetailTransaction.DetailFood.FoodCode)
-	//if cekStok == 0  {
-	//	return errors.New("Makanan Kosong")
-	//}
+	//fmt.Println(cekStok)
 	err = t.transactionRepo.SqlInsertTransaction(transaction)
 	if err != nil {
 		return err
