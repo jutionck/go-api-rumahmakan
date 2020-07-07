@@ -3,6 +3,7 @@ package food
 import (
 	"github.com/jutionck/go-api-rumahmakan/models"
 	"github.com/jutionck/go-api-rumahmakan/repository/food"
+	"github.com/jutionck/go-api-rumahmakan/utils"
 )
 
 type foodUsecase struct {
@@ -35,7 +36,11 @@ func (f foodUsecase) FindsFoods(foodCode string) (models.Food, error) {
 }
 
 func (f foodUsecase) SqlInsertFood(food *models.Food) error {
-	err := f.foodRepo.SqlInsertFood(food)
+	err := utils.ValidateInputNotNil(food.FoodName, food.FoodStock, food.FoodPrice,food.FoodCategory.CategoryCode)
+	if err != nil {
+		return err
+	}
+	err = f.foodRepo.SqlInsertFood(food)
 	if err != nil {
 		return err
 	}

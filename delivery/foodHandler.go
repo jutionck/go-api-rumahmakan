@@ -81,11 +81,17 @@ func (f *FoodHandler) ReturnFindFood(w http.ResponseWriter, r *http.Request) {
 func (f *FoodHandler) ReturnCreateFood(w http.ResponseWriter, r *http.Request) {
 	var food []models.Food
 	var response utils.Response
-	_ = json.NewDecoder(r.Body).Decode(&food) // json ke struct
+	err := json.NewDecoder(r.Body).Decode(&food) // json ke struct
+	if err != nil {
+		w.Write([]byte("Data Not Found"))
+		log.Print(err)
+	}
 	for i := range food {
 		err := f.foodUsecase.SqlInsertFood(&food[i])
 		if err != nil {
-			w.Write([]byte("Error occurred"))
+			w.Write([]byte(err.Error()))
+			log.Print(err)
+			return
 		}
 	}
 	response.Status = http.StatusOK
