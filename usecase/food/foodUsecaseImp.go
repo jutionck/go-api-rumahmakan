@@ -36,7 +36,7 @@ func (f foodUsecase) FindsFoods(foodCode string) (models.Food, error) {
 }
 
 func (f foodUsecase) SqlInsertFood(food *models.Food) error {
-	err := utils.ValidateInputNotNil(food.FoodName, food.FoodStock, food.FoodPrice,food.FoodCategory.CategoryCode)
+	err := utils.ValidateInputNotNil(food.FoodName, food.FoodStock)
 	if err != nil {
 		return err
 	}

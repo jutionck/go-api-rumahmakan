@@ -35,7 +35,7 @@ WHERE
     f.food_status = 1 AND f.id=?`
 
 	SQL_INSERT_FOOD = `INSERT INTO m_foods(id,food_name,food_price,cetegory_id,food_stock,created_at,updated_at) VALUES(?,?,?,?,?,?,?)`
-	SQL_UPDATE_FOOD = `UPDATE m_foods SET food_name=?, food_price=?,category_id=?,food_stock=?,udpated_at=? WHERE id=?`
+	SQL_UPDATE_FOOD = `UPDATE m_foods SET food_name=?, food_price=?,cetegory_id=?,food_stock=?,food_status='1',updated_at=? WHERE id=?`
 	SQL_DELETE_FOOD = `UPDATE m_foods SET food_status=0 WHERE id=?`
 
 	SELECT_FOOD_STOCK = `SELECT m_foods.id,m_foods.food_name,m_foods.food_stock FROM m_foods WHERE food_stock=0 AND id = ?`

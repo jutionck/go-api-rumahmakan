@@ -83,7 +83,7 @@ func (f *FoodHandler) ReturnCreateFood(w http.ResponseWriter, r *http.Request) {
 	var response utils.Response
 	err := json.NewDecoder(r.Body).Decode(&food) // json ke struct
 	if err != nil {
-		w.Write([]byte("Data Not Found"))
+		w.Write([]byte("Error"))
 		log.Print(err)
 	}
 	for i := range food {

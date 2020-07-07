@@ -42,7 +42,7 @@ func (t *TransactionRepository) SqlInsertTransaction(transaction *models.Transac
 		log.Fatal(err)
 	}
 	query2 := utils.INSERT_TRANSACTION_DETAIL
-	_, err = tx.Exec(query2,transaction.NotaNumber,transaction.DetailTransaction.DetailFood.FoodCode,transaction.DetailTransaction.AddFood.FoodAdd,transaction.DetailTransaction.Qty)
+	_, err = tx.Exec(query2,transaction.NotaNumber,transaction.DetailTransaction.DetailFood.FoodCode,transaction.DetailTransaction.AddFood.FoodAddCode,transaction.DetailTransaction.Qty)
 
 	if err != nil {
 		tx.Rollback()
