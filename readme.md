@@ -45,15 +45,17 @@ POST = loaclhost:9000/transaction
 CREATE Format Transaction
 
 {
-    "nota_number": "S20200707001",
+    "nota_number": "S20200811001",
     "detail_transaction": {
         "qty": 3,
         "food": {
-            "food_code": "476525dc-bff5-11ea-bdc5-2536a289c646"
+            "food_code": "476524c4-bff5-11ea-bdc5-2536a289c646"
         },
-        "additional_food": "-"
+        "additional_food": {
+            "food_add_code": "90a1dd33-cff4-11ea-bdc5-2233a289sc46"
+        }
     },
-    "customer_name": "Sugeng Halu"
+    "customer_name": "Deddy Corbuzier"
 }
 </pre>
 
