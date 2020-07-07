@@ -3,6 +3,7 @@ package transaction
 import (
 	"github.com/jutionck/go-api-rumahmakan/models"
 	"github.com/jutionck/go-api-rumahmakan/repository/transaction"
+	"github.com/jutionck/go-api-rumahmakan/utils"
 )
 
 type transactionUsecase struct {
@@ -19,7 +20,15 @@ func (t transactionUsecase) GetAllTransactions() ([]*models.Transaction, error) 
 
 
 func (t transactionUsecase) SqlInsertTransaction(transaction *models.Transaction) error {
-	err := t.transactionRepo.SqlInsertTransaction(transaction)
+	err := utils.ValidateInputNotNil(transaction.NotaNumber, transaction.NotaDate)
+	if err != nil {
+		return err
+	}
+	//cekStok, err := utils.CekStok(transaction.DetailTransaction.DetailFood.FoodCode)
+	//if cekStok == 0  {
+	//	return errors.New("Makanan Kosong")
+	//}
+	err = t.transactionRepo.SqlInsertTransaction(transaction)
 	if err != nil {
 		return err
 	}
